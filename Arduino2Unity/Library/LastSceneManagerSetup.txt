@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Ardion2Unity.unity
+  isLoaded: 1
+  isActive: 1
