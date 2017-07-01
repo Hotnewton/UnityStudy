@@ -7,7 +7,7 @@ using System.IO.Ports;
 public class Tu : MonoBehaviour {
 
 	 
-	SerialPort sp = new SerialPort ("/dev/cu.usbmodem14231", 9600); 
+	SerialPort sp = new SerialPort ("/dev/cu.usbmodem14221", 9600); 
 
 	public float speed = 10; 
 
@@ -20,27 +20,34 @@ public class Tu : MonoBehaviour {
 		sp.Open ();
 		sp.ReadTimeout = 1; 
 
+		int[] myArray = new int[]{1,2,3,4,5}; 
+		foreach(int n in myArray) 
+			Debug.Log(n); 
+
 	}
 
-	void Update () {
+	int tmp ;  
 
+	void Update () 
+	{
+		 
 		amountToMove = speed * Time.deltaTime;
 
-		if (sp.IsOpen) 
-		{
-			try {
-				moveObject (sp.ReadByte ());
-				Debug.Log(sp.ReadByte ()); 
+		if (sp.IsOpen) {
+			try 
+			{
+				moveObject(sp.ReadByte());
+				print(sp.ReadByte()); 
+			} catch (System.Exception) {
 			
-			} catch (System.Exception) 
+			}
 
-				{
-				
-				}
-				
+
 		}
-		
-	}
+
+	} 
+
+
 
 	void moveObject (int Direction)
 	{
